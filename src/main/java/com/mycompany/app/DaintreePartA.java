@@ -6,11 +6,11 @@ public class DaintreePartA
 {   
     private static ArrayList<String> bookName = new ArrayList<String>();
     private static ArrayList<Integer> pCopies = new ArrayList<Integer>();
-    private static ArrayList<Boolean> eBook = new ArrayList<Boolean>();
+    private static ArrayList<Boolean> eBook = new ArrayList<Boolean>(); // Creating ArrayLists.
     private static String cart = "";
     private static boolean isEbook = false; 
     
-    private static void initializingValues(){
+    private static void initializingValues(){ // Adding Books to designed Arrays.
         
         bookName.add("Absolute Java (Savitch)");
         bookName.add("JAVA: How to Program (Deitel and Deitel)");
@@ -33,7 +33,7 @@ public class DaintreePartA
     }
 
 
-    public static void addBook() {
+    public static void addBook() { // Used to Add a Book to the Cart.
         Scanner scan = new Scanner(System.in);
         System.out.println("\n\nEnter title to search for: ");
         String option = scan.next();
@@ -68,7 +68,7 @@ public class DaintreePartA
                     isEbook = true;
                 }
                 else {
-                    int numOfCopies = pCopies.get(j);
+                    int numOfCopies = pCopies.get(j); // Removes 1 Physical copy if Physical copy was chosen by the user.
                     if (numOfCopies > 0) {
                         cart = foundBook;
                         pCopies.remove(j);
@@ -93,7 +93,7 @@ public class DaintreePartA
         }
     }
 
-    public static void viewCart() {
+    public static void viewCart() { // View Shopping Cart.
 
         if(cart == "") {
             System.out.println("\n\nYour Shopping Cart is empty.\n\n");
@@ -104,7 +104,7 @@ public class DaintreePartA
         }
     }
 
-    public static void removeBook() {
+    public static void removeBook() { // Remove the selected book.
 
         System.out.println("\n\nYour Shopping Cart contains the following:");
         System.out.println("1. " + cart);
@@ -128,7 +128,7 @@ public class DaintreePartA
         }
     }
 
-    public static void checkOut() {
+    public static void checkOut() { // Buys the chosen book.
         if (cart == "") {
             System.out.println("\n\nYour cart is empty.\n\n");
         }
@@ -146,7 +146,7 @@ public class DaintreePartA
         }
     }
 
-    public static void listBooks() {
+    public static void listBooks() { // Lists all the available books
         
         System.out.println("\n\nThe following titles are available:");
         for (int i = 0; i < bookName.size(); i++) {
@@ -165,12 +165,12 @@ public class DaintreePartA
     }
 
 
-    public static void main(String[] args)
-        {
-            System.out.println("Welcome to Daintree!");
+    public static void main(String[] args) 
+        { // Main Method
+            System.out.println("Welcome to Daintree!"); 
             initializingValues();
         boolean exit = false;
-        while(exit == false) {
+        while(exit == false) { // User Options.
             System.out.println("Choose an option: ");
             System.out.println("1. Add a book to shopping cart");
             System.out.println("2. View shopping cart");
@@ -182,7 +182,7 @@ public class DaintreePartA
             System.out.println("Please make a selection: ");
             String selection = scan.next();
 
-            switch (selection) {
+            switch (selection) { // User Inputs lead them to the selected option.
                 case "1":
                     addBook();
                     break;

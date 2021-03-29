@@ -1,18 +1,18 @@
 // package com.mycompany.app
-import java.util.ArrayList;
+import java.util.ArrayList; //Packages
 import java.util.Scanner;
 
 public class BookStore extends Book {
 
     public BookStore(String bName, String bAuthor, int pCopies, boolean eBook) {
-        super(bName, bAuthor, pCopies, eBook);
+        super(bName, bAuthor, pCopies, eBook); // Super constructor.
     }
     
     private static ArrayList<Book> books = new ArrayList<>();
     private static ArrayList<Book> shoppingCart = new ArrayList<>();
-    private static ArrayList<Boolean> isEbook = new ArrayList<>();
+    private static ArrayList<Boolean> isEbook = new ArrayList<>();  // Creating ArrayLists.
 
-    public static void initializingValues() {
+    public static void initializingValues() { // Making Books as Array Objects.
         
         Book book = new Book("Absolute Java", "Savitch", 5, true);
         books.add(book);
@@ -31,7 +31,7 @@ public class BookStore extends Book {
 
     }
 
-    public static void addBook() {
+    public static void addBook() { // Used to Add Book(s) to the cart.
 
         Scanner scan = new Scanner(System.in);
         System.out.println("\n\nEnter title to search for: ");
@@ -40,7 +40,7 @@ public class BookStore extends Book {
         ArrayList<Book> foundBooks = new ArrayList<>();
         int j = 1;
 
-        for (int i = 0; i<books.size() ; i++ ) {
+        for (int i = 0; i<books.size() ; i++ ) { // Loop used to find book(s) according to the user's input.
             Book currentBook = books.get(i);
             if (currentBook.getBookName().toUpperCase().startsWith(option.toUpperCase())){
                 if (j == 1) {
@@ -74,13 +74,13 @@ public class BookStore extends Book {
                 return;
             }
 
-            Book purchasing = foundBooks.get(foundIndex);
+            Book purchasing = foundBooks.get(foundIndex); // Storing the purchased book as an object.
             
             System.out.println("Purchasing:" + purchasing.getBookName());
 
             System.out.println("Do you want to buy this as an ebook: ");
             String ebook = scan.next();
-            if (ebook.toLowerCase().equals("yes")) {
+            if (ebook.toLowerCase().equals("yes")) { // Making sure whether the book bought is an E-Book or Physical copy.
                 if (purchasing.getECopies() == false) {
                     System.out.println("There are no ebooks avaiable for that book.\n\n");
                     return;
@@ -100,7 +100,7 @@ public class BookStore extends Book {
                 else {
                     shoppingCart.add(purchasing);
                     isEbook.add(false);
-                    System.out.println("Item added to cart.\n\n");
+                    System.out.println("Item added to cart.\n\n"); // Removes 1 Physical Copy of the book chosen.
                     for (int i = 0; i < books.size(); i++) {
                         if (purchasing == books.get(i)) {
                             books.remove(i);
@@ -114,14 +114,14 @@ public class BookStore extends Book {
         }      
     }
     
-    public static void viewCart() {
+    public static void viewCart() { // Displays the user's cart.
         if (shoppingCart.isEmpty()) {
             System.out.println("\n\nYour Shopping Cart is empty.\n\n");
         }
         else {
             int j = 1;
             System.out.println("\n\nYour Shopping Cart contains the following:");
-            for (int i = 0; i < shoppingCart.size(); i++) {
+            for (int i = 0; i < shoppingCart.size(); i++) { // Loop used to list user's book choices.
                 System.out.println(j + ". " + shoppingCart.get(i).getBookName());
                 j++;
            }
@@ -129,7 +129,7 @@ public class BookStore extends Book {
         }
     }
     
-    public static void removeBook() {
+    public static void removeBook() { // Removes book(s).
         if (shoppingCart.isEmpty()) {
             System.out.println("\n\nThere is no book to be removed.\n\n");
             return;
@@ -158,7 +158,7 @@ public class BookStore extends Book {
             }
             Book removedBook = shoppingCart.get(foundIndex);
             shoppingCart.remove(foundIndex);
-            System.out.println("Your item has been removed.\n\n");
+            System.out.println("Your item has been removed.\n\n"); // This is used to update the physical copy of the book which was removed earlier and now added back. 
             if (!isEbook.get(foundIndex)) {
                 for (int i = 0; i < books.size(); i++) {
                     if (removedBook == books.get(i)) {
@@ -171,7 +171,7 @@ public class BookStore extends Book {
     }
 }
 
-    public static void checkOut() {
+    public static void checkOut() { // Checks out the books chosen by the user with the total price at the end.
 
         double totalPrice = 0.0;
         if (shoppingCart.isEmpty()) {
@@ -191,7 +191,7 @@ public class BookStore extends Book {
         }
     }
 
-    public static void listBooks() {
+    public static void listBooks() { // Lists all the available books and the available copies (E-Book and Physical).
         System.out.println("\n\nThe following titles are available:");
         for (int i = 0; i < books.size(); i++) {
             Book currentBook = books.get(i);
@@ -210,11 +210,11 @@ public class BookStore extends Book {
         System.out.println("\n\n");   
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { // Main Method.
         System.out.println("Welcome to Daintree!");
         initializingValues();
     boolean exit = false;
-    while(exit == false) {
+    while(exit == false) { // User Options.
         System.out.println("Choose an option: ");
         System.out.println("1. Add a book to shopping cart");
         System.out.println("2. View shopping cart");
@@ -226,7 +226,7 @@ public class BookStore extends Book {
         System.out.println("Please make a selection: ");
         String selection = scan.next();
 
-        switch (selection) {
+        switch (selection) { // User Inputs lead them to the selected option.
             case "1":
                 addBook();
                 break;

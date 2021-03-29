@@ -1,4 +1,6 @@
 // package com.mycompany.app
+// Book Class for OOP
+
 public class Book {
 
     private String bName;
@@ -28,4 +30,5 @@ public class Book {
     public boolean getECopies() {
         return eBook;
     }
+
 }
