@@ -1,6 +1,8 @@
-// package com.mycompany.app
-import java.util.ArrayList; //Packages
+package com.mycompany.app
+import java.util.ArrayList; // Packages
 import java.util.Scanner;
+
+// Main Program with main method.
 
 public class BookStore extends Book {
 
@@ -43,7 +45,7 @@ public class BookStore extends Book {
         for (int i = 0; i<books.size() ; i++ ) { // Loop used to find book(s) according to the user's input.
             Book currentBook = books.get(i);
             if (currentBook.getBookName().toUpperCase().startsWith(option.toUpperCase())){
-                if (j == 1) {
+                if (j == 1) { // Used to show if the input given by user is valid and has a matching book.
                     System.out.println("The following title(s) is a match: ");
                 }
                 System.out.println(j + ". " + currentBook.getBookName() + " -- " + currentBook.getAuthor());
@@ -52,7 +54,7 @@ public class BookStore extends Book {
             }
         }
 
-        if (foundBooks.isEmpty()) {
+        if (foundBooks.isEmpty()) { // When there is no book with the input given by the user.
             System.out.println("There is no title starting with that.\n\n");
             return;
         }
@@ -61,7 +63,7 @@ public class BookStore extends Book {
         }
 
         System.out.println("Which number item do you wish to purchase: ");
-        String selection = scan.next();
+        String selection = scan.next(); // Used to purchase a book.
 
         if (selection == "0") {
             System.out.println("Cancelled.\n\n");
@@ -69,7 +71,7 @@ public class BookStore extends Book {
         else {
             int foundIndex = Integer.parseInt(selection) - 1;
 
-            if (foundIndex >= foundBooks.size()) {
+            if (foundIndex >= foundBooks.size()) { 
                 System.out.println("Invalid  option.\n\n");
                 return;
             }
@@ -137,7 +139,7 @@ public class BookStore extends Book {
         Scanner scan = new Scanner(System.in);
         System.out.println("\n\nWhich number item do you wish to remove: "); 
         int j = 1;
-        for (int i = 0; i < shoppingCart.size(); i++) {
+        for (int i = 0; i < shoppingCart.size(); i++) { // Loop that iterates and find all the books choosen by the user.
             System.out.println(j + ". " + shoppingCart.get(i).getBookName());
             j++;
         }
@@ -178,7 +180,7 @@ public class BookStore extends Book {
             System.out.println("\n\nYour cart is empty.\n\n");
         }
         else {
-            for (int i = 0; i < shoppingCart.size(); i++) {
+            for (int i = 0; i < shoppingCart.size(); i++) { // Loop that iterates and purchases all the books chosen by the user.
                 if (isEbook.get(i) == true){
                     totalPrice = totalPrice + 8.0;
                 }

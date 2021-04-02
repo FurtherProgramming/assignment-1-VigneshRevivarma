@@ -1,5 +1,5 @@
-// package com.mycompany.app
-import java.util.ArrayList;
+package com.mycompany.app
+import java.util.ArrayList; // Part A main code.
 import java.util.Scanner;
 
 public class DaintreePartA
